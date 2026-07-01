@@ -89,97 +89,98 @@ def init_db():
     """)
 
     # Seed data
-    print("Seeding database...")
+    print("Seeding database with Indian elements...")
     
     # 1. Users
     users_data = [
-        ('admin', generate_password_hash('admin'), 'admin@feastexpress.com', 'admin'),
-        ('owner1', generate_password_hash('owner'), 'pizza_palace@feastexpress.com', 'owner'),
-        ('owner2', generate_password_hash('owner'), 'sushi_central@feastexpress.com', 'owner'),
-        ('owner3', generate_password_hash('owner'), 'burger_bistro@feastexpress.com', 'owner'),
-        ('customer', generate_password_hash('password'), 'john.doe@gmail.com', 'customer'),
-        ('customer2', generate_password_hash('password'), 'jane.smith@gmail.com', 'customer')
+        ('admin', generate_password_hash('admin'), 'admin@feastexpress.in', 'admin'),
+        ('owner1', generate_password_hash('owner'), 'spicesymphony@feastexpress.in', 'owner'),
+        ('owner2', generate_password_hash('owner'), 'dakshindelights@feastexpress.in', 'owner'),
+        ('owner3', generate_password_hash('owner'), 'mumbaichaat@feastexpress.in', 'owner'),
+        ('customer', generate_password_hash('password'), 'amit.sharma@gmail.com', 'customer'),
+        ('customer2', generate_password_hash('password'), 'priya.patel@gmail.com', 'customer')
     ]
     cursor.executemany("INSERT INTO users (username, password, email, role) VALUES (?, ?, ?, ?)", users_data)
 
     # 2. Restaurants
     restaurants_data = [
-        ('Pizza Palace', 'Authentic brick-oven Italian pizzas, fresh pasta, and delectable garlic knots.', 'Italian', '123 Main St, Downtown', 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60', 2),
-        ('Sushi Central', 'Freshly sliced sashimi, specialty sushi rolls, and traditional Japanese ramen.', 'Japanese', '456 Elm St, Midtown', 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=500&auto=format&fit=crop&q=60', 3),
-        ('Burger Bistro', 'Gourmet grass-fed beef burgers, crispy sweet potato fries, and thick craft milkshakes.', 'American', '789 Oak St, Westend', 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60', 4)
+        ('Spice Symphony', 'Rich and aromatic North Indian curries, tandoori items, and slow-cooked dumpukht biryanis.', 'North Indian', 'Shop 12, Sector 18 Market, Noida, Delhi NCR', 'https://images.unsplash.com/photo-1585938338392-50a59970d8ee?w=500&auto=format&fit=crop&q=60', 2),
+        ('Dakshin Delights', 'Crispy masala dosas, fluffy idlis, flavorful sambar, and authentic traditional filter coffee.', 'South Indian', '100 Feet Road, Indiranagar, Bengaluru, Karnataka', 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60', 3),
+        ('Mumbai Street Bites', 'Spicy vada pavs, crispy samosa chaats, pav bhaji, and cutting masala chai.', 'Street Food', 'Linking Road, Bandra West, Mumbai, Maharashtra', 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 4)
     ]
     cursor.executemany("INSERT INTO restaurants (name, description, cuisine, address, image_url, owner_id) VALUES (?, ?, ?, ?, ?, ?)", restaurants_data)
 
     # 3. Menu Items
-    # Restaurant 1: Pizza Palace (ID: 1)
+    # Restaurant 1: Spice Symphony (ID: 1)
     r1_items = [
-        (1, 'Bruschetta', 'Toasted sourdough topped with diced tomatoes, fresh basil, garlic, and balsamic glaze.', 8.99, 'https://images.unsplash.com/photo-1572656631137-7935297eff55?w=500&auto=format&fit=crop&q=60', 'Starter'),
-        (1, 'Garlic Knots', 'Warm pizza dough knots tossed in olive oil, fresh minced garlic, parmesan, and parsley.', 6.49, 'https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?w=500&auto=format&fit=crop&q=60', 'Starter'),
-        (1, 'Margherita Pizza', 'San Marzano tomato sauce, fresh mozzarella, fresh basil, and extra virgin olive oil.', 14.99, 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=500&auto=format&fit=crop&q=60', 'Main Course'),
-        (1, 'Pepperoni Feast Pizza', 'Double pepperoni, mozzarella cheese, and our signature herb-infused tomato sauce.', 16.99, 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&auto=format&fit=crop&q=60', 'Main Course'),
-        (1, 'Tiramisu', 'Layers of espresso-soaked ladyfingers and creamy mascarpone, dusted with cocoa powder.', 7.99, 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=500&auto=format&fit=crop&q=60', 'Dessert'),
-        (1, 'Italian Soda', 'Refreshing sparkling water flavored with natural raspberry syrup.', 3.49, 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=60', 'Beverage')
+        (1, 'Paneer Tikka', 'Cottage cheese cubes marinated in spiced yogurt and grilled in a clay oven (tandoor).', 249.00, 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (1, 'Chicken Seekh Kebab', 'Minced chicken skewers spiced with fresh coriander, cumin, and mint, roasted on skewers.', 299.00, 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (1, 'Butter Chicken', 'Tender tandoori chicken cooked in a rich, velvety tomato and cream gravy with loads of butter.', 349.00, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (1, 'Shahi Paneer', 'Paneer cubes simmered in a smooth, aromatic cashew nut and cream gravy, spiced with cardamom.', 319.00, 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (1, 'Gulab Jamun', 'Warm, deep-fried milk dumplings soaked in green cardamom-flavored sugar syrup (2 pieces).', 99.00, 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60', 'Dessert'),
+        (1, 'Mango Lassi', 'Chilled sweet yogurt drink blended with fresh sweet Alphonso mango pulp.', 79.00, 'https://images.unsplash.com/photo-1571006682887-573562305593?w=500&auto=format&fit=crop&q=60', 'Beverage')
     ]
     
-    # Restaurant 2: Sushi Central (ID: 2)
+    # Restaurant 2: Dakshin Delights (ID: 2)
     r2_items = [
-        (2, 'Edamame', 'Steamed soybeans sprinkled with coarse sea salt.', 4.99, 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500&auto=format&fit=crop&q=60', 'Starter'),
-        (2, 'Gyoza', 'Pan-fried Japanese pork dumplings served with a savory dipping sauce.', 7.99, 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=500&auto=format&fit=crop&q=60', 'Starter'),
-        (2, 'Signature Dragon Roll', 'Eel and cucumber inside, topped with avocado, tobiko, and sweet eel sauce.', 15.99, 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=500&auto=format&fit=crop&q=60', 'Main Course'),
-        (2, 'Tonkotsu Ramen', 'Rich pork bone broth, fresh ramen noodles, chashu pork, soft-boiled egg, and green onion.', 14.49, 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop&q=60', 'Main Course'),
-        (2, 'Matcha Ice Cream', 'Creamy green tea ice cream topped with red bean paste.', 5.99, 'https://images.unsplash.com/photo-1505394033343-40a690728749?w=500&auto=format&fit=crop&q=60', 'Dessert'),
-        (2, 'Iced Oolong Tea', 'Traditional chilled Japanese green tea.', 2.99, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=60', 'Beverage')
+        (2, 'Medu Vada', 'Crispy, savory deep-fried black lentil donuts, served with coconut chutney and hot sambar (2 pieces).', 89.00, 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (2, 'Onion Uttapam', 'Thick savory rice and lentil pancakes topped with finely chopped onions, green chilies, and coriander.', 119.00, 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (2, 'Special Masala Dosa', 'Thin, crispy rice crepes stuffed with spiced potato mash, served with fresh chutneys.', 149.00, 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (2, 'Paneer Ghee Roast Dosa', 'Crispy dosa smeared with rich spicy Mangalorean ghee roast gravy and crumbled paneer.', 189.00, 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (2, 'Kesari Bath', 'Sweet semolina pudding cooked with pure desi ghee, saffron, and loaded with cashew nuts.', 79.00, 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60', 'Dessert'),
+        (2, 'Madras Filter Coffee', 'Authentic chicory-blend south Indian coffee frothed with hot milk in traditional brass tumbler.', 49.00, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=60', 'Beverage')
     ]
 
-    # Restaurant 3: Burger Bistro (ID: 3)
+    # Restaurant 3: Mumbai Street Bites (ID: 3)
     r3_items = [
-        (3, 'Onion Rings', 'Crispy beer-battered onion rings served with spicy chipotle aioli.', 5.99, 'https://images.unsplash.com/photo-1639024471283-2bc7b3c6a267?w=500&auto=format&fit=crop&q=60', 'Starter'),
-        (3, 'Bacon Cheeseburger', 'Angus beef patty, cheddar, crispy smoked bacon, lettuce, tomato, and bistro sauce.', 13.99, 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500&auto=format&fit=crop&q=60', 'Main Course'),
-        (3, 'Truffle Mushroom Burger', 'Gourmet beef patty topped with sautéed wild mushrooms, swiss cheese, and black truffle oil.', 14.99, 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500&auto=format&fit=crop&q=60', 'Main Course'),
-        (3, 'Warm Fudge Brownie', 'Rich chocolate brownie served warm with a scoop of vanilla bean ice cream.', 6.99, 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop&q=60', 'Dessert'),
-        (3, 'Chocolate Milkshake', 'Creamy vanilla ice cream blended with dark Belgian chocolate syrup and whipped cream.', 4.99, 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop&q=60', 'Beverage')
+        (3, 'Classic Vada Pav', 'The ultimate Mumbai street food - spicy potato fritter inside a soft bun with dry garlic chutney.', 49.00, 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (3, 'Samosa Chaat', 'Crispy samosa crushed and topped with warm white peas gravy, sweet yogurt, and tangy chutneys.', 89.00, 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (3, 'Pav Bhaji', 'Richly spiced mashed vegetable curry cooked on a flat tawa, served with two heavily buttered pav sliders.', 159.00, 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (3, 'Chole Bhature', 'Spicy Punjabi chickpea curry served with two puffed deep-fried leavened bread, pickles, and onions.', 179.00, 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (3, 'Kulfi Falooda', 'Creamy pistachio kulfi slices served with rose syrup, vermicelli, and basil seeds.', 119.00, 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&auto=format&fit=crop&q=60', 'Dessert'),
+        (3, 'Cutting Masala Chai', 'Strong milk-boiled black tea infused with fresh crushed ginger and green cardamoms.', 29.00, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=60', 'Beverage')
     ]
 
     cursor.executemany("INSERT INTO menu_items (restaurant_id, name, description, price, image_url, category) VALUES (?, ?, ?, ?, ?, ?)", r1_items + r2_items + r3_items)
 
     # 4. Reviews
     reviews_data = [
-        (5, 1, 5, 'Absolutely incredible! The Margherita pizza is as authentic as it gets. Will order again!'),
-        (6, 1, 4, 'Very good pizza and quick delivery. The garlic knots were slightly oily but delicious.'),
-        (5, 2, 5, 'The sashimi was incredibly fresh and the Tonkotsu broth was so rich! Highly recommend.'),
-        (6, 2, 4, 'Excellent sushi rolls. A bit on the pricey side but definitely worth the quality.'),
-        (5, 3, 4, 'Solid burger. Bacon was extremely crispy! Frites were a bit cold.'),
-        (6, 3, 5, 'The truffle mushroom burger is to die for. Hands down the best burger in town!')
+        (5, 1, 5, 'The Butter Chicken here is absolutely heavenly! Perfectly spiced and sweet. Best in NCR.'),
+        (6, 1, 4, 'Very good Paneer Tikka. Tender and fresh. Highly recommended.'),
+        (5, 2, 5, 'Best Masala Dosa in Indiranagar. The filter coffee has the perfect strength and froth!'),
+        (6, 2, 4, 'Fluffy idlis and crispy vadas. Chutney was slightly watery but tasted amazing.'),
+        (5, 3, 4, 'Excellent Pav Bhaji. Samosa chaat was sweet and tangy. Very authentic Mumbai taste.'),
+        (6, 3, 5, 'Best Vada Pav outside Maharashtra. Super spicy red and green garlic chutney!')
     ]
     cursor.executemany("INSERT INTO reviews (customer_id, restaurant_id, rating, comment) VALUES (?, ?, ?, ?)", reviews_data)
 
     # 5. Orders (Pre-existing orders for display)
-    # Order 1: Pending for Restaurant 1 (Pizza Palace) from customer (user_id 5)
+    # Order 1: Pending for Restaurant 1 (Spice Symphony) from Amit Sharma (user_id 5)
     cursor.execute("""
     INSERT INTO orders (customer_id, restaurant_id, total_price, status, delivery_address) 
-    VALUES (5, 1, 23.48, 'Pending', '102 Pine Road, Apt 4B')
+    VALUES (5, 1, 448.00, 'Pending', 'Flat 402, Shiv Shakti Apartments, Sector 15, Vashi, Navi Mumbai')
     """)
     order_id_1 = cursor.lastrowid
     cursor.executemany("INSERT INTO order_items (order_id, menu_item_id, price, quantity) VALUES (?, ?, ?, ?)", [
-        (order_id_1, 3, 14.99, 1), # Margherita Pizza
-        (order_id_1, 5, 7.99, 1)    # Tiramisu
+        (order_id_1, 3, 349.00, 1), # Butter Chicken
+        (order_id_1, 5, 99.00, 1)    # Gulab Jamun
     ])
 
-    # Order 2: Delivered for Restaurant 2 (Sushi Central) from customer2 (user_id 6)
+    # Order 2: Delivered for Restaurant 2 (Dakshin Delights) from Priya Patel (user_id 6)
     cursor.execute("""
     INSERT INTO orders (customer_id, restaurant_id, total_price, status, delivery_address) 
-    VALUES (6, 2, 38.47, 'Delivered', '742 Evergreen Terrace')
+    VALUES (6, 2, 347.00, 'Delivered', 'House No. 12, Block C, Noida Sector 62, Uttar Pradesh')
     """)
     order_id_2 = cursor.lastrowid
     cursor.executemany("INSERT INTO order_items (order_id, menu_item_id, price, quantity) VALUES (?, ?, ?, ?)", [
-        (order_id_2, 9, 15.99, 1), # Dragon Roll
-        (order_id_2, 10, 14.49, 1), # Ramen
-        (order_id_2, 12, 2.99, 2)   # Oolong Tea * 2
+        (order_id_2, 9, 149.00, 1), # Dosa
+        (order_id_2, 10, 189.00, 1), # Paneer Ghee Roast Dosa
+        (order_id_2, 12, 49.00, 2)   # Filter Coffee * 2
     ])
 
     conn.commit()
     conn.close()
-    print("Database successfully initialized!")
+    print("Database successfully initialized with Indian items!")
 
 if __name__ == '__main__':
     init_db()

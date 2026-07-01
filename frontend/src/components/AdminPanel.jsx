@@ -683,7 +683,7 @@ export default function AdminPanel({ user }) {
 
                   <div className="form-group" style={{ marginBottom: 0 }}>
                     <label className="form-label">Address</label>
-                    <input type="text" className="form-input" placeholder="456 Spicy Lane" value={restAddress} onChange={(e) => setRestAddress(e.target.value)} required />
+                    <input type="text" className="form-input" placeholder="MG Road, Indiranagar, Bengaluru" value={restAddress} onChange={(e) => setRestAddress(e.target.value)} required />
                   </div>
                   
                   <div className="form-group" style={{ marginBottom: 0 }}>

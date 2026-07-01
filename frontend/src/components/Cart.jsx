@@ -140,7 +140,7 @@ export default function Cart({ cart, onClose, onUpdateQty, onRemove, user, onOrd
             <input 
               type="text" 
               className="form-input" 
-              placeholder="123 Main St, Apartment 4B" 
+              placeholder="Flat 402, Shiv Shakti Apts, Bandra West, Mumbai" 
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
