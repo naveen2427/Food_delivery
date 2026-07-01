@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend/dist', static_url_path='/')
 CORS(app) # Enable CORS for all routes
 
 DB_FILE = 'food_delivery.db'
@@ -37,16 +37,22 @@ def get_current_user():
         return dict(user)
     return None
 
-@app.route('/')
-def home():
-    return jsonify({
-        "message": "FeastExpress Backend API is running successfully!",
-        "frontend_url": "http://localhost:5173",
-        "endpoints": {
-            "restaurants": "/api/restaurants",
-            "metrics": "/api/admin/metrics"
-        }
-    }), 200
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    if path.startswith('api'):
+        return jsonify({"error": "API route not found"}), 404
+    try:
+        return app.send_static_file('index.html')
+    except Exception:
+        return jsonify({
+            "message": "FeastExpress Backend API is running successfully!",
+            "note": "Frontend build files were not found. If this is development, run Vite dev server. If this is production, make sure npm run build was executed.",
+            "endpoints": {
+                "restaurants": "/api/restaurants",
+                "metrics": "/api/admin/metrics"
+            }
+        }), 200
 
 # ==========================================
 # AUTH ENDPOINTS
