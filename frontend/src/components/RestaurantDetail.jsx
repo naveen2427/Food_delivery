@@ -168,7 +168,7 @@ export default function RestaurantDetail({ restaurantId, onBack, user, onAddToCa
                       <div style={styles.menuItemDetails}>
                         <div style={styles.menuItemHeader}>
                           <h4 style={styles.menuItemName}>{item.name}</h4>
-                          <span style={styles.menuItemPrice}>${item.price.toFixed(2)}</span>
+                          <span style={styles.menuItemPrice}>₹{item.price.toFixed(2)}</span>
                         </div>
                         <p style={styles.menuItemDesc}>{item.description}</p>
                         

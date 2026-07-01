@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, ChevronUp, MapPin, Calendar, DollarSign, Clock, CheckCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, MapPin, Calendar, IndianRupee, Clock, CheckCircle } from 'lucide-react';
 
 export default function OrderTracking({ user }) {
   const [orders, setOrders] = useState([]);
@@ -181,8 +181,8 @@ export default function OrderTracking({ user }) {
                       <span>{new Date(o.created_at).toLocaleDateString()}</span>
                     </div>
                     <div style={styles.metaItem}>
-                      <DollarSign size={12} />
-                      <span style={{ fontWeight: '700' }}>${o.total_price.toFixed(2)}</span>
+                      <IndianRupee size={12} />
+                      <span style={{ fontWeight: '700' }}>₹{o.total_price.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export default function OrderTracking({ user }) {
                       <div key={item.id} style={styles.itemRow}>
                         <span>{item.quantity} x {item.name}</span>
                         <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: '600' }}>
-                          ${(item.price * item.quantity).toFixed(2)}
+                          ₹{(item.price * item.quantity).toFixed(2)}
                         </span>
                       </div>
                     ))}
@@ -229,7 +229,7 @@ export default function OrderTracking({ user }) {
 
                   <div style={styles.totalBox}>
                     <span>Total Amount Paid</span>
-                    <span>${orderDetails.order.total_price.toFixed(2)}</span>
+                    <span>₹{orderDetails.order.total_price.toFixed(2)}</span>
                   </div>
                 </div>
 

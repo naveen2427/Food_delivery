@@ -382,7 +382,7 @@ export default function AdminPanel({ user }) {
                       </div>
 
                       <div style={styles.orderRowTotal}>
-                        ${order.total_price.toFixed(2)}
+                        ₹{order.total_price.toFixed(2)}
                       </div>
 
                       <div style={styles.orderRowActions}>
@@ -458,7 +458,7 @@ export default function AdminPanel({ user }) {
                       </div>
                       <div style={styles.formRow}>
                         <div className="form-group" style={{ marginBottom: 0, flex: 1 }}>
-                          <label className="form-label">Price ($)</label>
+                          <label className="form-label">Price (₹)</label>
                           <input type="number" step="0.01" className="form-input" placeholder="12.99" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required />
                         </div>
                         <div className="form-group" style={{ marginBottom: 0, flex: 1 }}>
@@ -511,7 +511,7 @@ export default function AdminPanel({ user }) {
                       </div>
 
                       <div style={{ fontWeight: '700', marginRight: '24px', fontFamily: "'Outfit', sans-serif" }}>
-                        ${item.price.toFixed(2)}
+                        ₹{item.price.toFixed(2)}
                       </div>
 
                       <div style={{ display: 'flex', gap: '8px' }}>
@@ -557,7 +557,7 @@ export default function AdminPanel({ user }) {
             <div className="glass-card" style={styles.metricCard}>
               <BarChart2 size={24} style={{ color: 'var(--primary)' }} />
               <div>
-                <div style={styles.metricVal}>${metrics.total_sales.toFixed(2)}</div>
+                <div style={styles.metricVal}>₹{metrics.total_sales.toFixed(2)}</div>
                 <div style={styles.metricLabel}>Total Revenue</div>
               </div>
             </div>
@@ -633,7 +633,7 @@ export default function AdminPanel({ user }) {
                     <div key={idx} style={styles.cuisineSalesRow}>
                       <div style={styles.cuisineSalesMeta}>
                         <span style={{ fontWeight: '600' }}>{cs.cuisine}</span>
-                        <span style={{ color: 'var(--secondary)', fontWeight: '700' }}>${cs.revenue.toFixed(2)}</span>
+                        <span style={{ color: 'var(--secondary)', fontWeight: '700' }}>₹{cs.revenue.toFixed(2)}</span>
                       </div>
                       
                       {/* Bar indicator */}
@@ -721,7 +721,7 @@ export default function AdminPanel({ user }) {
                     </div>
 
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontWeight: '700', fontFamily: "'Outfit', sans-serif" }}>${o.total_price.toFixed(2)}</div>
+                      <div style={{ fontWeight: '700', fontFamily: "'Outfit', sans-serif" }}>₹{o.total_price.toFixed(2)}</div>
                       <span className={`badge ${
                         o.status === 'Pending' ? 'badge-pending' :
                         o.status === 'Preparing' ? 'badge-preparing' :

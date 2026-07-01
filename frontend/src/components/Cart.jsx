@@ -95,7 +95,7 @@ export default function Cart({ cart, onClose, onUpdateQty, onRemove, user, onOrd
             <div key={item.id} style={styles.itemRow}>
               <div style={styles.itemMeta}>
                 <div style={styles.itemName}>{item.name}</div>
-                <div style={styles.itemPrice}>${item.price.toFixed(2)} each</div>
+                <div style={styles.itemPrice}>₹{item.price.toFixed(2)} each</div>
               </div>
               
               <div style={styles.itemControls}>
@@ -105,7 +105,7 @@ export default function Cart({ cart, onClose, onUpdateQty, onRemove, user, onOrd
                   <button style={styles.qtyBtn} onClick={() => onUpdateQty(item.id, 1)}><Plus size={12} /></button>
                 </div>
                 
-                <span style={styles.rowTotal}>${(item.price * item.quantity).toFixed(2)}</span>
+                <span style={styles.rowTotal}>₹{(item.price * item.quantity).toFixed(2)}</span>
                 
                 <button style={styles.deleteBtn} onClick={() => onRemove(item.id)}><Trash2 size={16} /></button>
               </div>
@@ -117,19 +117,19 @@ export default function Cart({ cart, onClose, onUpdateQty, onRemove, user, onOrd
         <div style={styles.summaryContainer}>
           <div style={styles.summaryRow}>
             <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>₹{subtotal.toFixed(2)}</span>
           </div>
           <div style={styles.summaryRow}>
             <span>Delivery Fee</span>
-            <span>${deliveryFee.toFixed(2)}</span>
+            <span>₹{deliveryFee.toFixed(2)}</span>
           </div>
           <div style={styles.summaryRow}>
             <span>Estimated Tax (8%)</span>
-            <span>${tax.toFixed(2)}</span>
+            <span>₹{tax.toFixed(2)}</span>
           </div>
           <div style={{ ...styles.summaryRow, ...styles.totalRow }}>
             <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+            <span>₹{total.toFixed(2)}</span>
           </div>
         </div>
 
@@ -154,7 +154,7 @@ export default function Cart({ cart, onClose, onUpdateQty, onRemove, user, onOrd
             disabled={loading}
           >
             <CreditCard size={18} />
-            {loading ? 'Placing Order...' : `Place Order • $${total.toFixed(2)}`}
+            {loading ? 'Placing Order...' : `Place Order • ₹${total.toFixed(2)}`}
           </button>
         </form>
       </div>
