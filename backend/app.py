@@ -37,6 +37,17 @@ def get_current_user():
         return dict(user)
     return None
 
+@app.route('/')
+def home():
+    return jsonify({
+        "message": "FeastExpress Backend API is running successfully!",
+        "frontend_url": "http://localhost:5173",
+        "endpoints": {
+            "restaurants": "/api/restaurants",
+            "metrics": "/api/admin/metrics"
+        }
+    }), 200
+
 # ==========================================
 # AUTH ENDPOINTS
 # ==========================================
