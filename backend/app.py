@@ -198,6 +198,45 @@ def get_restaurants():
         "cuisines": cuisines
     })
 
+@app.route('/api/search/suggestions', methods=['GET'])
+def search_suggestions():
+    q = request.args.get('q', '').strip()
+    if not q or len(q) < 1:
+        return jsonify({"suggestions": []})
+        
+    conn = get_db_connection()
+    
+    # 1. Match restaurants
+    rest_rows = conn.execute("SELECT id, name FROM restaurants WHERE name LIKE ?", (f"%{q}%",)).fetchall()
+    
+    # 2. Match cuisines
+    cuis_rows = conn.execute("SELECT DISTINCT cuisine FROM restaurants WHERE cuisine LIKE ?", (f"%{q}%",)).fetchall()
+    
+    # 3. Match menu items (dishes)
+    menu_rows = conn.execute("""
+        SELECT mi.name, mi.restaurant_id, r.name as restaurant_name 
+        FROM menu_items mi
+        JOIN restaurants r ON mi.restaurant_id = r.id
+        WHERE mi.name LIKE ?
+    """, (f"%{q}%",)).fetchall()
+    
+    conn.close()
+    
+    results = []
+    for r in rest_rows:
+        results.append({"text": r['name'], "type": "restaurant", "id": r['id']})
+    for c in cuis_rows:
+        results.append({"text": c['cuisine'], "type": "cuisine"})
+    for m in menu_rows:
+        results.append({
+            "text": m['name'], 
+            "type": "dish", 
+            "restaurant_id": m['restaurant_id'], 
+            "restaurant_name": m['restaurant_name']
+        })
+        
+    return jsonify({"suggestions": results[:8]})
+
 @app.route('/api/restaurants/<int:restaurant_id>', methods=['GET'])
 def get_restaurant_details(restaurant_id):
     conn = get_db_connection()

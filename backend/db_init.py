@@ -115,30 +115,48 @@ def init_db():
     r1_items = [
         (1, 'Paneer Tikka', 'Cottage cheese cubes marinated in spiced yogurt and grilled in a clay oven (tandoor).', 249.00, 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=500&auto=format&fit=crop&q=60', 'Starter'),
         (1, 'Chicken Seekh Kebab', 'Minced chicken skewers spiced with fresh coriander, cumin, and mint, roasted on skewers.', 299.00, 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (1, 'Chicken Malai Tikka', 'Tender chicken chunks marinated in a creamy rich cashew paste, cheese, and cream, grilled to perfection.', 329.00, 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (1, 'Tandoori Gobi', 'Cauliflower florets marinated in spiced yogurt and roasted in a tandoor.', 219.00, 'https://images.unsplash.com/photo-1585938338392-50a59970d8ee?w=500&auto=format&fit=crop&q=60', 'Starter'),
         (1, 'Butter Chicken', 'Tender tandoori chicken cooked in a rich, velvety tomato and cream gravy with loads of butter.', 349.00, 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60', 'Main Course'),
         (1, 'Shahi Paneer', 'Paneer cubes simmered in a smooth, aromatic cashew nut and cream gravy, spiced with cardamom.', 319.00, 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (1, 'Dal Makhani', 'Black lentils and kidney beans slow-cooked overnight with spices, butter, and fresh cream.', 279.00, 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (1, 'Chicken Dum Biryani', 'Long-grain basmati rice layered with spiced marinated chicken, saffron, and fresh mint, cooked on low flame (dum).', 349.00, 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (1, 'Garlic Naan', 'Leavened flatbread brushed with fresh minced garlic and butter.', 69.00, 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 'Main Course'),
         (1, 'Gulab Jamun', 'Warm, deep-fried milk dumplings soaked in green cardamom-flavored sugar syrup (2 pieces).', 99.00, 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60', 'Dessert'),
-        (1, 'Mango Lassi', 'Chilled sweet yogurt drink blended with fresh sweet Alphonso mango pulp.', 79.00, 'https://images.unsplash.com/photo-1571006682887-573562305593?w=500&auto=format&fit=crop&q=60', 'Beverage')
+        (1, 'Rasmalai', 'Soft paneer patties soaked in sweet, saffron-infused milk, garnished with pistachios.', 119.00, 'https://images.unsplash.com/photo-1589301988718-d7a44f3c054f?w=500&auto=format&fit=crop&q=60', 'Dessert'),
+        (1, 'Mango Lassi', 'Chilled sweet yogurt drink blended with fresh sweet Alphonso mango pulp.', 79.00, 'https://images.unsplash.com/photo-1571006682887-573562305593?w=500&auto=format&fit=crop&q=60', 'Beverage'),
+        (1, 'Sweet Lassi', 'Traditional sweet and creamy Punjabi style churned yogurt drink topped with malai.', 69.00, 'https://images.unsplash.com/photo-1571006682887-573562305593?w=500&auto=format&fit=crop&q=60', 'Beverage')
     ]
     
     # Restaurant 2: Dakshin Delights (ID: 2)
     r2_items = [
         (2, 'Medu Vada', 'Crispy, savory deep-fried black lentil donuts, served with coconut chutney and hot sambar (2 pieces).', 89.00, 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format&fit=crop&q=60', 'Starter'),
         (2, 'Onion Uttapam', 'Thick savory rice and lentil pancakes topped with finely chopped onions, green chilies, and coriander.', 119.00, 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (2, 'Idli Sambar', 'Steamed fluffy rice-lentil cakes served with freshly ground coconut chutney and mixed vegetable sambar (2 pieces).', 79.00, 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60', 'Starter'),
         (2, 'Special Masala Dosa', 'Thin, crispy rice crepes stuffed with spiced potato mash, served with fresh chutneys.', 149.00, 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format&fit=crop&q=60', 'Main Course'),
         (2, 'Paneer Ghee Roast Dosa', 'Crispy dosa smeared with rich spicy Mangalorean ghee roast gravy and crumbled paneer.', 189.00, 'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (2, 'Mysore Masala Dosa', 'Crispy golden dosa lined with hot and spicy garlic-red chili chutney, stuffed with potato masala.', 169.00, 'https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (2, 'Malabar Parotta with Kurma', 'Two flaky, layered flatbreads served with a spiced, mixed vegetable coconut milk gravy.', 179.00, 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 'Main Course'),
         (2, 'Kesari Bath', 'Sweet semolina pudding cooked with pure desi ghee, saffron, and loaded with cashew nuts.', 79.00, 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60', 'Dessert'),
-        (2, 'Madras Filter Coffee', 'Authentic chicory-blend south Indian coffee frothed with hot milk in traditional brass tumbler.', 49.00, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=60', 'Beverage')
+        (2, 'Elaneer Payasam', 'Traditional sweet dessert made of tender coconut pulp, milk, and condensed milk flavored with cardamom.', 99.00, 'https://images.unsplash.com/photo-1589301988718-d7a44f3c054f?w=500&auto=format&fit=crop&q=60', 'Dessert'),
+        (2, 'Madras Filter Coffee', 'Authentic chicory-blend south Indian coffee frothed with hot milk in traditional brass tumbler.', 49.00, 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=60', 'Beverage'),
+        (2, 'Spiced Buttermilk', 'Refreshing, watered churned yogurt flavored with ginger, green chilies, curry leaves, and coriander.', 49.00, 'https://images.unsplash.com/photo-1571006682887-573562305593?w=500&auto=format&fit=crop&q=60', 'Beverage')
     ]
 
     # Restaurant 3: Mumbai Street Bites (ID: 3)
     r3_items = [
         (3, 'Classic Vada Pav', 'The ultimate Mumbai street food - spicy potato fritter inside a soft bun with dry garlic chutney.', 49.00, 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=60', 'Starter'),
         (3, 'Samosa Chaat', 'Crispy samosa crushed and topped with warm white peas gravy, sweet yogurt, and tangy chutneys.', 89.00, 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (3, 'Pani Puri (Gol Gappa)', 'Six crispy puffed puris stuffed with boiled potatoes and chickpeas, filled with sweet and spicy herbal water.', 59.00, 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 'Starter'),
+        (3, 'Sev Puri', 'Flat crisp puris topped with boiled potatoes, onions, a trio of sweet-sour-spicy chutneys, and fine sev.', 69.00, 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 'Starter'),
         (3, 'Pav Bhaji', 'Richly spiced mashed vegetable curry cooked on a flat tawa, served with two heavily buttered pav sliders.', 159.00, 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=500&auto=format&fit=crop&q=60', 'Main Course'),
         (3, 'Chole Bhature', 'Spicy Punjabi chickpea curry served with two puffed deep-fried leavened bread, pickles, and onions.', 179.00, 'https://images.unsplash.com/photo-1596797038530-2c107229654b?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (3, 'Spicy Misal Pav', 'A spicy sprouted bean curry topped with farsan (crunchy mixture), onions, lemon, served with buttered pav.', 129.00, 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60', 'Main Course'),
+        (3, 'Cheese Masala Toast', 'Bombay street style sandwich stuffed with spiced potatoes, cucumbers, onions, and processed cheese, toasted.', 119.00, 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500&auto=format&fit=crop&q=60', 'Main Course'),
         (3, 'Kulfi Falooda', 'Creamy pistachio kulfi slices served with rose syrup, vermicelli, and basil seeds.', 119.00, 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&auto=format&fit=crop&q=60', 'Dessert'),
-        (3, 'Cutting Masala Chai', 'Strong milk-boiled black tea infused with fresh crushed ginger and green cardamoms.', 29.00, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=60', 'Beverage')
+        (3, 'Rabdi Jalebi', 'Crispy hot sugar-dipped jalebis served with a dollop of thick, reduced cardamom milk (rabdi).', 129.00, 'https://images.unsplash.com/photo-1589301988718-d7a44f3c054f?w=500&auto=format&fit=crop&q=60', 'Dessert'),
+        (3, 'Cutting Masala Chai', 'Strong milk-boiled black tea infused with fresh crushed ginger and green cardamoms.', 29.00, 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=60', 'Beverage'),
+        (3, 'Kokum Sharbat', 'Cooling traditional coastal drink made from sweet-and-sour kokum fruit extract, spiced with cumin and black salt.', 49.00, 'https://images.unsplash.com/photo-1571006682887-573562305593?w=500&auto=format&fit=crop&q=60', 'Beverage')
     ]
 
     cursor.executemany("INSERT INTO menu_items (restaurant_id, name, description, price, image_url, category) VALUES (?, ?, ?, ?, ?, ?)", r1_items + r2_items + r3_items)

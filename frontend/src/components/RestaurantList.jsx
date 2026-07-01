@@ -7,10 +7,32 @@ export default function RestaurantList({ setRestaurantId, setPage }) {
   const [selectedCuisine, setSelectedCuisine] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   useEffect(() => {
     fetchRestaurants();
   }, [selectedCuisine]);
+
+  // Debounced search suggestions fetcher
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSuggestions([]);
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      try {
+        const response = await fetch(`/api/search/suggestions?q=${encodeURIComponent(searchQuery)}`);
+        const data = await response.json();
+        setSuggestions(data.suggestions || []);
+      } catch (err) {
+        console.error('Error fetching suggestions:', err);
+      }
+    }, 200); // 200ms debounce
+
+    return () => clearTimeout(timer);
+  }, [searchQuery]);
 
   const fetchRestaurants = async (search = searchQuery) => {
     setLoading(true);
@@ -63,11 +85,57 @@ export default function RestaurantList({ setRestaurantId, setPage }) {
                 className="form-input" 
                 style={styles.searchInput}
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setShowSuggestions(true)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowSuggestions(true);
+                }}
+                onBlur={() => {
+                  // Small delay so that suggestion click event registers before dropdown is hidden
+                  setTimeout(() => setShowSuggestions(false), 200);
+                }}
               />
               <button type="submit" className="btn btn-primary" style={styles.searchBtn}>
                 Find Food
               </button>
+
+              {/* Suggestions Dropdown */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="suggestions-dropdown">
+                  {suggestions.map((s, idx) => (
+                    <div 
+                      key={idx} 
+                      className="suggestion-item"
+                      onClick={() => {
+                        if (s.type === 'restaurant') {
+                          handleSelectRestaurant(s.id);
+                        } else if (s.type === 'dish') {
+                          handleSelectRestaurant(s.restaurant_id);
+                        } else if (s.type === 'cuisine') {
+                          setSelectedCuisine(s.text);
+                          setSearchQuery('');
+                        }
+                        setSuggestions([]);
+                        setShowSuggestions(false);
+                      }}
+                    >
+                      <div className="suggestion-text">
+                        <Search size={14} style={{ color: 'var(--text-muted)' }} />
+                        <span className="suggestion-name">{s.text}</span>
+                        {s.type === 'dish' && (
+                          <span className="suggestion-sub">in {s.restaurant_name}</span>
+                        )}
+                      </div>
+                      <span className={`suggestion-tag ${
+                        s.type === 'restaurant' ? 'tag-rest' :
+                        s.type === 'cuisine' ? 'tag-cuisine' : 'tag-dish'
+                      }`}>
+                        {s.type}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </form>
         </div>
